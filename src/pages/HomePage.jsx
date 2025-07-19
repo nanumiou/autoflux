@@ -21,9 +21,8 @@ const HomePage = () => {
   const handleDownloadClick = async () => {
     setLoading(true);
     try {
-      // TODO: 실제 GitHub 저장소 정보로 변경 필요
-      // 예: https://api.github.com/repos/username/autotrader-desktop/releases/latest
-      const response = await fetch('https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/releases/latest');
+      // AutoFlux GitHub 저장소의 실제 릴리즈 API
+      const response = await fetch('https://api.github.com/repos/nanumiou/autoflux/releases/latest');
       const data = await response.json();
       
       // Windows 설치 파일 찾기
