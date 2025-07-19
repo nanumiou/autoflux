@@ -65,7 +65,6 @@ h1, h2, h3, h4, h5 {
 p, div.text-secondary {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400; /* Regular for body text */
-  text-align: left; /* 좌측 정렬 */
 }
 
 /* 사용자 가이드 컨테이너 내 모든 텍스트 좌측 정렬 */
