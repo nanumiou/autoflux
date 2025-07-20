@@ -64,7 +64,7 @@ const HomePage = () => {
               {loading ? '다운로드 준비 중...' : '앱 다운로드'}
             </button>
             <Link to="/user-guide" className="guide-link">
-              사용자 가이드
+              이용 가이드
             </Link>
           </div>
         </section>
