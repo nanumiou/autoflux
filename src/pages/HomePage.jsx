@@ -19,6 +19,17 @@ const HomePage = () => {
 
   // GitHub Releases API를 통한 다운로드
   const handleDownloadClick = async () => {
+    // 다운로드 확인 창 표시
+    const isConfirmed = window.confirm(
+      'AutoFlux Desktop 앱을 다운로드하시겠습니까?\n\n' +
+      '• 파일 크기: 약 80MB\n' +
+      '• Windows 10/11 지원'
+    );
+
+    if (!isConfirmed) {
+      return; // 사용자가 취소한 경우 다운로드하지 않음
+    }
+
     setLoading(true);
     try {
       // AutoFlux GitHub 저장소의 실제 릴리즈 API
@@ -34,12 +45,12 @@ const HomePage = () => {
         window.open(asset.browser_download_url, '_blank');
       } else {
         // 대체 방법: 릴리즈 페이지로 이동
-        window.open('https://github.com/YOUR_USERNAME/YOUR_REPO/releases/latest', '_blank');
+        window.open('https://github.com/nanumiou/autoflux/releases/latest', '_blank');
       }
     } catch (error) {
       console.error('Download failed:', error);
       // 에러 시 릴리즈 페이지로 이동
-      window.open('https://github.com/YOUR_USERNAME/YOUR_REPO/releases/latest', '_blank');
+      window.open('https://github.com/nanumiou/autoflux/releases/latest', '_blank');
     } finally {
       setLoading(false);
     }
