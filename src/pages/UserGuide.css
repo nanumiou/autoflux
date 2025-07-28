@@ -249,3 +249,12 @@
   border-radius: 10px;
   border-left: 4px solid #f39c12;
 }
+
+/* Fix text alignment for all list items */
+.user-guide-container .step-details li {
+  text-align: left !important;
+}
+
+.user-guide-container .step-details span {
+  text-align: left !important;
+}
