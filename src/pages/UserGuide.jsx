@@ -79,7 +79,7 @@ function UserGuide() {
           <ArrowLeft size={20} className="me-2" />
           홈으로 돌아가기
         </Link>
-        <h2 className="fw-bold text-dark mt-3">이용 안내</h2>
+        {/* <h2 className="fw-bold text-dark mt-3">이용 안내</h2> */}
       </div>
 
       {/* Main Process Flow */}
