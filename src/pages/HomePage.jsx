@@ -60,7 +60,7 @@ const HomePage = () => {
     <div className="landing-container">
       <header className="landing-header">
         <img src={logo} alt="Auto Trading 로고" style={{ height: '80px', marginBottom: '1rem' }} />
-        <p>"Trade less. Live more."</p>
+        <p className="tagline">"Trade less. Live more."</p>
       </header>
 
       <main className="landing-main">
