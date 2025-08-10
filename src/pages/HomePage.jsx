@@ -102,6 +102,7 @@ const HomePage = () => {
       <footer className="landing-footer">
         <p>&copy; {new Date().getFullYear()} 프랜홀딩스. All Rights Reserved.</p>
         <p className="footer-note">회원가입 및 로그인은 데스크톱 앱에서 진행하세요.</p>
+        <p className="footer-contact">문의사항: <a href="mailto:autoflux.master@gmail.com">autoflux.master@gmail.com</a></p>
       </footer>
     </div>
   );
