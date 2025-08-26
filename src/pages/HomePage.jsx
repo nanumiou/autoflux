@@ -22,7 +22,7 @@ const HomePage = () => {
     // 다운로드 확인 창 표시
     const isConfirmed = window.confirm(
       'AutoFlux Desktop 앱을 다운로드하시겠습니까?\n\n' +
-      '• 파일 크기: 약 80MB\n' +
+      // '• 파일 크기: 약 80MB\n' +
       '• Windows 10/11 지원'
     );
 
@@ -89,7 +89,7 @@ const HomePage = () => {
             </div>
             <div className="feature-item">
               <h3>📊 무료 전략 검증</h3>
-              <p>모의투자를 통해 당신의 전략이 얼마나 효과적인지 검증할 수 있습니다.</p>
+              <p>백테스트와 모의투자를 통해 당신의 전략이 얼마나 효과적인지 검증할 수 있습니다.</p>
             </div>
             <div className="feature-item">
               <h3>🔔 실시간 알림</h3>
