@@ -102,11 +102,12 @@
   background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
 }
 
-.step-card-1::before { background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); }
-.step-card-2::before { background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%); }
-.step-card-3::before { background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); }
-.step-card-4::before { background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%); }
-.step-card-5::before { background: linear-gradient(90deg, #fa709a 0%, #fee140 100%); }
+.step-card-0::before { background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); }
+.step-card-1::before { background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%); }
+.step-card-2::before { background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); }
+.step-card-3::before { background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%); }
+.step-card-4::before { background: linear-gradient(90deg, #fa709a 0%, #fee140 100%); }
+.step-card-5::before { background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); }
 .step-card-6::before { background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); }
 
 .step-number {
@@ -121,11 +122,12 @@
   font-size: 1.3rem;
 }
 
-.step-number.step-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-.step-number.step-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-.step-number.step-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-.step-number.step-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-.step-number.step-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.step-number.step-0 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.step-number.step-1 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.step-number.step-2 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.step-number.step-3 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.step-number.step-4 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.step-number.step-5 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
 .step-number.step-6 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
 
 /* Details Styling */
@@ -240,6 +242,11 @@
 
 .user-guide-container .text-secondary {
   color: #495057 !important;
+}
+
+/* 다크모드 스타일 */
+[data-theme="dark"] .user-guide-container .text-primary {
+  color: #f0f0f0 !important;
 }
 
 /* Alert Styling - Only for User Guide Page */
