@@ -238,7 +238,7 @@ function UserGuide() {
       <div className="mb-5">
         <Card className="border-0 shadow-sm bg-light">
           <Card.Body className="p-4">
-            <h5 className="fw-bold mb-3">
+            <h5 className="fw-bold mb-3 text-start">
               <i className="fas fa-exclamation-triangle text-warning me-2"></i>
               참고 사항
             </h5>
