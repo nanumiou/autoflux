@@ -93,7 +93,7 @@ const HomePage = () => {
             </div>
             <div className="feature-item">
               <h3>🔒 데이터 보안</h3>
-              <p>모든 데이터는 사용자의 PC에 저장되어 외부에 노출되지 않고 안전하게 이용 가능합니다.</p>
+              <p>모든 자동매매 데이터는 사용자의 PC에 저장되어 외부에 노출되지 않고 안전하게 이용 가능합니다.</p>
             </div>
           </div>
         </section>
