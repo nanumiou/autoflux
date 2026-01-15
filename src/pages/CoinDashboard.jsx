@@ -220,6 +220,19 @@ const CoinDashboard = () => {
         });
     };
 
+    // 툴팁용 시간 포맷팅 ("1.15 23:30" 형식)
+    const formatTooltipTime = (timestamp) => {
+        if (!timestamp) return '-';
+        const date = new Date(timestamp);
+        // DB에 저장된 시간이 KST 기준이므로 UTC 메서드를 사용하여 값 그대로 추출
+        const month = date.getUTCMonth() + 1;
+        const day = date.getUTCDate();
+        const hours = String(date.getUTCHours()).padStart(2, '0');
+        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+
+        return `${month}.${day} ${hours}:${minutes}`;
+    };
+
     // 차트 데이터 가공
     const chartData = prices.map(p => ({
         time: formatTime(p.timestamp),
@@ -375,6 +388,12 @@ const CoinDashboard = () => {
                                         color: '#F3F4F6'
                                     }}
                                     formatter={(value) => [formatNumber(value) + '원', '가격']}
+                                    labelFormatter={(label, payload) => {
+                                        if (payload && payload.length > 0) {
+                                            return formatTooltipTime(payload[0].payload.timestamp);
+                                        }
+                                        return label;
+                                    }}
                                 />
                                 <Line
                                     type="monotone"
