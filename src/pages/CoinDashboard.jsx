@@ -208,19 +208,42 @@ const CoinDashboard = () => {
         );
     }
 
+    // 봇 실행 상태 판단 (조합 방식)
+    const isBotRunning = () => {
+        if (kpi?.bot_status !== 'running') return false;
+
+        // 마지막 업데이트가 5분 이내인지 확인 (비정상 종료 대비)
+        if (kpi?.updated_at) {
+            const lastUpdate = new Date(kpi.updated_at);
+            const diffMinutes = (new Date() - lastUpdate) / 1000 / 60;
+            return diffMinutes < 5;
+        }
+        return false;
+    };
+
+    // 봇 시작 시간 포맷팅
+    const formatBotStartTime = () => {
+        if (!kpi?.bot_started_at) return '-';
+        const date = new Date(kpi.bot_started_at);
+        return date.toLocaleString('ko-KR', {
+            month: 'numeric',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    };
+
     return (
         <div className="dashboard-container">
             {/* 헤더 */}
             <header className="dashboard-header">
                 <h1>AutoFlux 코인 대시보드</h1>
                 <div className="header-info">
-                    {lastUpdate && (
-                        <span className="last-update">
-                            마지막 업데이트: {lastUpdate.toLocaleTimeString('ko-KR')}
-                        </span>
-                    )}
-                    <span className={`status-indicator ${kpi ? 'active' : 'inactive'}`}>
-                        {kpi ? '● 실시간' : '○ 대기 중'}
+                    <span className="last-update">
+                        매매 시작: {formatBotStartTime()}
+                    </span>
+                    <span className={`status-indicator ${isBotRunning() ? 'active' : 'inactive'}`}>
+                        {isBotRunning() ? '● 실행중' : '○ 중지됨'}
                     </span>
                 </div>
             </header>
