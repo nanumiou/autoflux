@@ -333,11 +333,11 @@ const CoinDashboard = () => {
                     </div>
                     <div className="kpi-card">
                         <h3>매수거래</h3>
-                        <p className="kpi-value"> {formatNumber(kpi?.buy_trades)} 회</p>
+                        <p className="kpi-value">{formatNumber(kpi?.buy_trades)} 회</p>
                     </div>
                     <div className="kpi-card">
                         <h3>매도거래</h3>
-                        <p className="kpi-value"> {formatNumber(kpi?.sell_trades)} 회</p>
+                        <p className="kpi-value">{formatNumber(kpi?.sell_trades)} 회</p>
                     </div>
                     <div className="kpi-card">
                         <h3>승률</h3>
