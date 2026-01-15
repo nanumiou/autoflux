@@ -169,7 +169,7 @@ const CoinDashboard = () => {
         return date.toLocaleTimeString('ko-KR', {
             hour: '2-digit',
             minute: '2-digit',
-            second: '2-digit',
+            hour12: false,
             timeZone: 'UTC'
         });
     };
@@ -182,6 +182,7 @@ const CoinDashboard = () => {
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
+            hour12: false,
             timeZone: 'Asia/Seoul'
         });
     };
@@ -236,6 +237,7 @@ const CoinDashboard = () => {
         if (!kpi?.bot_started_at) return '-';
         const date = new Date(kpi.bot_started_at);
         return date.toLocaleString('ko-KR', {
+            year: 'numeric',
             month: 'numeric',
             day: 'numeric',
             hour: '2-digit',
