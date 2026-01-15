@@ -278,6 +278,15 @@ const CoinDashboard = () => {
         });
     };
 
+    // 차트 제목 생성
+    const getChartTitle = () => {
+        if (prices && prices.length > 0 && prices[0].symbol) {
+            const symbol = prices[0].symbol.replace('KRW-', '');
+            return `${symbol} 매매 차트`;
+        }
+        return '매매 차트';
+    };
+
     return (
         <div className="dashboard-container">
             {/* 헤더 */}
@@ -324,11 +333,11 @@ const CoinDashboard = () => {
                     </div>
                     <div className="kpi-card">
                         <h3>매수거래</h3>
-                        <p className="kpi-value">{formatNumber(kpi?.buy_trades)} 회</p>
+                        <p className="kpi-value"> {formatNumber(kpi?.buy_trades)} 회</p>
                     </div>
                     <div className="kpi-card">
                         <h3>매도거래</h3>
-                        <p className="kpi-value">{formatNumber(kpi?.sell_trades)} 회</p>
+                        <p className="kpi-value"> {formatNumber(kpi?.sell_trades)} 회</p>
                     </div>
                     <div className="kpi-card">
                         <h3>승률</h3>
@@ -337,9 +346,9 @@ const CoinDashboard = () => {
                 </div>
             </section>
 
-            {/* 가격 차트 */}
+            {/* 매매 차트 */}
             <section className="chart-section">
-                <h2>가격 차트</h2>
+                <h2>{getChartTitle()}</h2>
                 {chartData.length > 0 ? (
                     <div className="chart-container">
                         <ResponsiveContainer width="100%" height={400}>
