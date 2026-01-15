@@ -70,7 +70,6 @@ const CoinDashboard = () => {
             if (logError) throw logError;
             setLogs(logData || []);
 
-            setLastUpdate(new Date());
             setError(null);
         } catch (err) {
             console.error('데이터 로드 오류:', err);
@@ -97,7 +96,6 @@ const CoinDashboard = () => {
                     filter: `admin_id=eq.${ADMIN_UUID}`
                 }, (payload) => {
                     setKpi(payload.new);
-                    setLastUpdate(new Date());
                 })
                 .subscribe();
 
@@ -111,7 +109,6 @@ const CoinDashboard = () => {
                     filter: `admin_id=eq.${ADMIN_UUID}`
                 }, (payload) => {
                     setPrices(prev => [...prev.slice(-1999), payload.new]);
-                    setLastUpdate(new Date());
                 })
                 .subscribe();
 
@@ -125,7 +122,6 @@ const CoinDashboard = () => {
                     filter: `admin_id=eq.${ADMIN_UUID}`
                 }, (payload) => {
                     setLogs(prev => [payload.new, ...prev.slice(0, 99)]);
-                    setLastUpdate(new Date());
                 })
                 .subscribe();
 
@@ -139,7 +135,6 @@ const CoinDashboard = () => {
                     filter: `admin_id=eq.${ADMIN_UUID}`
                 }, (payload) => {
                     setSignals(prev => [...prev, payload.new]);
-                    setLastUpdate(new Date());
                 })
                 .subscribe();
 
