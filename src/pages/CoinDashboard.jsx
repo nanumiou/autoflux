@@ -162,11 +162,16 @@ const CoinDashboard = () => {
         }).format(num);
     };
 
-    // 시간 포맷팅
+    // 시간 포맷팅 (한국 시간대 명시)
     const formatTime = (timestamp) => {
         if (!timestamp) return '-';
         const date = new Date(timestamp);
-        return date.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        return date.toLocaleTimeString('ko-KR', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: 'Asia/Seoul'
+        });
     };
 
     // 차트 데이터 가공
@@ -214,7 +219,7 @@ const CoinDashboard = () => {
         return false;
     };
 
-    // 봇 시작 시간 포맷팅
+    // 봇 시작 시간 포맷팅 (한국 시간대 명시)
     const formatBotStartTime = () => {
         if (!kpi?.bot_started_at) return '-';
         const date = new Date(kpi.bot_started_at);
@@ -222,7 +227,8 @@ const CoinDashboard = () => {
             month: 'numeric',
             day: 'numeric',
             hour: '2-digit',
-            minute: '2-digit'
+            minute: '2-digit',
+            timeZone: 'Asia/Seoul'
         });
     };
 
