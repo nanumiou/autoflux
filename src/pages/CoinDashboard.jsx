@@ -291,7 +291,7 @@ const CoinDashboard = () => {
         <div className="dashboard-container">
             {/* 헤더 */}
             <header className="dashboard-header">
-                <h1>AutoFlux 코인 대시보드</h1>
+                <h1>AutoFlux 자동매매 대시보드</h1>
                 <div className="header-info">
                     <span className="last-update">
                         매매 시작: {formatBotStartTime()}
