@@ -160,7 +160,8 @@ const CoinDashboard = () => {
         const handleVisitor = async () => {
             try {
                 // 1. 세션 처리를 통해 중복 카운트 방지
-                const visitedKey = `visited_${new Date().toDateString()}`;
+                const kstDate = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Seoul' });
+                const visitedKey = `visited_${kstDate}`;
                 const hasVisited = sessionStorage.getItem(visitedKey);
 
                 if (!hasVisited) {
@@ -351,7 +352,7 @@ const CoinDashboard = () => {
                 <h2>{getChartTitle()}</h2>
                 {chartData.length > 0 ? (
                     <div className="chart-container">
-                        <ResponsiveContainer width="100%" height={400}>
+                        <ResponsiveContainer width="100%" height="100%">
                             <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                                 <XAxis
