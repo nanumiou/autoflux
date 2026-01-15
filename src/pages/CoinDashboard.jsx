@@ -169,12 +169,6 @@ const CoinDashboard = () => {
         }).format(num);
     };
 
-    // 퍼센트 포맷팅
-    const formatPercent = (num) => {
-        if (num === null || num === undefined) return '-';
-        return `${num >= 0 ? '+' : ''}${num.toFixed(2)}%`;
-    };
-
     // 시간 포맷팅
     const formatTime = (timestamp) => {
         if (!timestamp) return '-';
