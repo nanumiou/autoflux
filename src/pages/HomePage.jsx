@@ -59,7 +59,7 @@ const HomePage = () => {
   return (
     <div className="landing-container">
       <header className="landing-header">
-        <img src={logo} alt="Auto Trading 로고" style={{ height: '80px', marginBottom: '1rem' }} />
+        <img src={logo} alt="Auto Trading 로고" style={{ height: '90px', marginBottom: '1rem' }} />
         <p className="tagline">"Trade less. Live more."</p>
       </header>
 
@@ -81,19 +81,19 @@ const HomePage = () => {
         </section>
 
         <section className="features-section">
-          <h2>주요 기능</h2>
+          <h2>─────</h2>
           <div className="features-grid">
             <div className="feature-item">
-              <h3>📈 전략 자동화</h3>
-              <p>자신만의 투자 전략을 설정하면 프로그램이 자동으로 매매를 실행합니다.</p>
+              <h3>📈 커스텀 매매로직</h3>
+              <p>AI를 활용해 사용자가 원하는 매매로직을 자동 생성해서 자동매매에 쉽게 적용할 수 있습니다.</p>
             </div>
             <div className="feature-item">
-              <h3>📊 무료 전략 검증</h3>
-              <p>백테스트와 모의투자를 통해 당신의 전략이 얼마나 효과적인지 검증할 수 있습니다.</p>
+              <h3>📊 로직 백테스트</h3>
+              <p>백테스트를 통해 자신이 생성한 매매로직이 얼마나 효과적인지 검증하여 최적의 전략을 빠르게 찾을 수 있습니다.</p>
             </div>
             <div className="feature-item">
-              <h3>🔔 실시간 알림</h3>
-              <p>자동매매가 진행되는 동안 주요 매매 정보를 실시간으로 알려드립니다.</p>
+              <h3>🔒 데이터 보안</h3>
+              <p>모든 자동매매 데이터는 사용자의 PC에 저장되어 외부에 노출되지 않고 안전하게 이용 가능합니다.</p>
             </div>
           </div>
         </section>

@@ -12,7 +12,7 @@
 
 .landing-header {
   background-color: #ffffff;
-  padding: 20px;
+  padding: 60px 20px 20px 20px;
   border-bottom: 1px solid #e0e0e0;
   text-align: center; /* 헤더 중앙정렬 확실히 */
 }
@@ -31,11 +31,11 @@
 }
 
 .landing-header .tagline {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 500;
   font-style: italic;
-  color: #1abc9c;
-  margin: 10px 0 0;
+  color: #2d2d2d;
+  margin: 0px 0 15px;
   letter-spacing: 0.5px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -125,7 +125,7 @@
 .features-section h2 {
   font-size: 2.2rem;
   margin-bottom: 40px;
-  color: #2c3e50;
+  color: #3c546c;
 }
 
 .features-grid {
@@ -142,6 +142,15 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.feature-item h3 {
+  margin-bottom: 30px;
+  font-family: 'Noto Sans KR', 'Malgun Gothic', 'Apple Gothic', sans-serif;
+}
+
+.feature-item p {
+  font-size: 1.1em;
+}
+
 .feature-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -155,7 +164,7 @@
 }
 
 .footer-links a {
-  color: #1abc9c;
+  color: white;
   margin: 0 10px;
   text-decoration: none;
 }
