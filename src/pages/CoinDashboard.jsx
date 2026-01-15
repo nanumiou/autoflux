@@ -162,7 +162,7 @@ const CoinDashboard = () => {
         }).format(num);
     };
 
-    // 시간 포맷팅 (한국 시간대 명시)
+    // 시간 포맷팅 (DB에 이미 한국 시간이 저장되어 있으므로 UTC로 해석하여 그대로 표시)
     const formatTime = (timestamp) => {
         if (!timestamp) return '-';
         const date = new Date(timestamp);
@@ -170,7 +170,7 @@ const CoinDashboard = () => {
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
-            timeZone: 'Asia/Seoul'
+            timeZone: 'UTC'
         });
     };
 
