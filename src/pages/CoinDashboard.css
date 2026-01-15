@@ -320,3 +320,31 @@
     padding: 16px;
   }
 }
+
+/* Footer */
+.dashboard-footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 20px;
+  border-top: 1px solid #1f2937;
+  color: #6b7280;
+}
+
+.visitor-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-family: 'JetBrains Mono', 'Menlo', monospace;
+  font-size: 0.85rem;
+}
+
+.visitor-stats strong {
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.visitor-stats .divider {
+  color: #374151;
+}

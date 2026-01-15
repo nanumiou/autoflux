@@ -18,6 +18,8 @@ const CoinDashboard = () => {
     const [loading, setLoading] = useState(true);
     // 에러 메시지
     const [error, setError] = useState(null);
+    // 방문자 통계
+    const [visitorStats, setVisitorStats] = useState({ today: 0, total: 0 });
 
     // 데이터 로드
     const fetchData = useCallback(async () => {
@@ -152,6 +154,36 @@ const CoinDashboard = () => {
             document.body.classList.remove('dashboard-page-body');
         };
     }, [fetchData]);
+
+    // 방문자 카운트 및 통계 조회
+    useEffect(() => {
+        const handleVisitor = async () => {
+            try {
+                // 1. 세션 처리를 통해 중복 카운트 방지
+                const visitedKey = `visited_${new Date().toDateString()}`;
+                const hasVisited = sessionStorage.getItem(visitedKey);
+
+                if (!hasVisited) {
+                    // 카운트 증가 RPC 호출
+                    await supabase.rpc('increment_visitor_count');
+                    sessionStorage.setItem(visitedKey, 'true');
+                }
+
+                // 2. 통계 조회 RPC 호출
+                const { data, error } = await supabase.rpc('get_visitor_stats');
+                if (!error && data && data.length > 0) {
+                    setVisitorStats({
+                        today: data[0].today_count,
+                        total: data[0].total_count
+                    });
+                }
+            } catch (err) {
+                console.error('방문자 통계 오류:', err);
+            }
+        };
+
+        handleVisitor();
+    }, []);
 
     // 숫자 포맷팅
     const formatNumber = (num, decimals = 0) => {
@@ -392,6 +424,11 @@ const CoinDashboard = () => {
 
             {/* 푸터 */}
             <footer className="dashboard-footer">
+                <div className="visitor-stats">
+                    <span>Total: <strong>{visitorStats.total.toLocaleString()}</strong></span>
+                    <span className="divider">|</span>
+                    <span>Today: <strong>{visitorStats.today.toLocaleString()}</strong></span>
+                </div>
                 <p>© {new Date().getFullYear()} AutoFlux Coin Dashboard</p>
             </footer>
         </div>
