@@ -18,8 +18,6 @@ const CoinDashboard = () => {
     const [loading, setLoading] = useState(true);
     // 에러 메시지
     const [error, setError] = useState(null);
-    // 마지막 업데이트 시간
-    const [lastUpdate, setLastUpdate] = useState(null);
 
     // 데이터 로드
     const fetchData = useCallback(async () => {
