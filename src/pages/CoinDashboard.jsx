@@ -174,6 +174,18 @@ const CoinDashboard = () => {
         });
     };
 
+    // 로그 시간 포맷팅 (DB에 UTC로 저장되어 있으므로 한국 시간으로 변환)
+    const formatLogTime = (timestamp) => {
+        if (!timestamp) return '-';
+        const date = new Date(timestamp);
+        return date.toLocaleTimeString('ko-KR', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: 'Asia/Seoul'
+        });
+    };
+
     // 차트 데이터 가공
     const chartData = prices.map(p => ({
         time: formatTime(p.timestamp),
@@ -194,7 +206,7 @@ const CoinDashboard = () => {
     }
 
     // 에러 화면
-    if (error && !kpi) {
+    if (error) {
         return (
             <div className="dashboard-container">
                 <div className="error-message">
@@ -364,7 +376,7 @@ const CoinDashboard = () => {
                     {logs.length > 0 ? (
                         logs.map((log, idx) => (
                             <div key={log.id || idx} className={`log-item ${log.level?.toLowerCase() || 'info'}`}>
-                                <span className="log-time">{formatTime(log.timestamp)}</span>
+                                <span className="log-time">{formatLogTime(log.timestamp)}</span>
                                 <span className="log-message">{log.message}</span>
                             </div>
                         ))
