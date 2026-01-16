@@ -67,10 +67,12 @@ const CoinDashboard = () => {
                 .select('*')
                 .eq('admin_id', ADMIN_UUID)
                 .order('timestamp', { ascending: false })
-                .limit(100);
+                .limit(500);
 
             if (logError) throw logError;
-            setLogs(logData || []);
+            // '매매 로직 실행' 로그 필터링
+            const filteredLogs = (logData || []).filter(log => !log.message.includes('매매 로직 실행'));
+            setLogs(filteredLogs);
 
             setError(null);
         } catch (err) {
@@ -123,7 +125,9 @@ const CoinDashboard = () => {
                     table: 'coin_dashboard_logs',
                     filter: `admin_id=eq.${ADMIN_UUID}`
                 }, (payload) => {
-                    setLogs(prev => [payload.new, ...prev.slice(0, 99)]);
+                    if (!payload.new.message.includes('매매 로직 실행')) {
+                        setLogs(prev => [payload.new, ...prev.slice(0, 499)]);
+                    }
                 })
                 .subscribe();
 
@@ -231,6 +235,16 @@ const CoinDashboard = () => {
         const minutes = String(date.getUTCMinutes()).padStart(2, '0');
 
         return `${month}.${day} ${hours}:${minutes}`;
+    };
+
+    // 로그 메시지 정제 (매수/매도 상세 조건 숨김)
+    const formatLogMessage = (message) => {
+        if (!message) return '';
+        // "매수 신호:" 또는 "매도 신호:" 가 포함된 경우 상세 내역 제거
+        if (message.includes('매수 신호:') || message.includes('매도 신호:')) {
+            return message.split(':')[0];
+        }
+        return message;
     };
 
     // 차트 데이터 가공
@@ -369,7 +383,8 @@ const CoinDashboard = () => {
                             <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                                 <XAxis
-                                    dataKey="time"
+                                    dataKey="timestamp"
+                                    tickFormatter={formatTime}
                                     stroke="#9CA3AF"
                                     tick={{ fill: '#9CA3AF', fontSize: 11 }}
                                     interval="preserveStartEnd"
@@ -405,7 +420,11 @@ const CoinDashboard = () => {
                                 />
                                 {/* 매수/매도 마커 */}
                                 {signals.map((signal, idx) => {
-                                    const signalTime = new Date(signal.timestamp).getTime();
+                                    // Price 데이터는 KST 시간이 UTC로 해석되어 차트에 표시됨 (예: 21:00 KST -> timestamp는 21:00 UTC 값)
+                                    // Signal 데이터는 실제 UTC이므로 (예: 12:00 UTC), 이를 차트 시간(21:00)과 맞추기 위해 9시간을 더함
+                                    const kstOffset = 9 * 60 * 60 * 1000;
+                                    const signalTime = new Date(signal.timestamp).getTime() + kstOffset;
+
                                     const matchingPrice = chartData.find(d =>
                                         Math.abs(d.timestamp - signalTime) < 60000
                                     );
@@ -413,7 +432,7 @@ const CoinDashboard = () => {
                                     return (
                                         <ReferenceDot
                                             key={idx}
-                                            x={matchingPrice.time}
+                                            x={matchingPrice.timestamp}
                                             y={signal.price}
                                             r={6}
                                             fill={signal.action === 'buy' ? '#10B981' : '#EF4444'}
@@ -440,7 +459,7 @@ const CoinDashboard = () => {
                         logs.map((log, idx) => (
                             <div key={log.id || idx} className={`log-item ${log.level?.toLowerCase() || 'info'}`}>
                                 <span className="log-time">{formatLogTime(log.timestamp)}</span>
-                                <span className="log-message">{log.message}</span>
+                                <span className="log-message">{formatLogMessage(log.message)}</span>
                             </div>
                         ))
                     ) : (
