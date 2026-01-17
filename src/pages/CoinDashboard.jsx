@@ -1,9 +1,15 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase, ADMIN_UUID } from '../supabaseClient';
 import {
-    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceDot
+    CartesianGrid,
+    Line,
+    LineChart,
+    ReferenceDot,
+    ResponsiveContainer,
+    Tooltip,
+    XAxis, YAxis
 } from 'recharts';
+import { ADMIN_UUID, supabase } from '../supabaseClient';
 import './CoinDashboard.css';
 
 const CoinDashboard = () => {
@@ -350,6 +356,10 @@ const CoinDashboard = () => {
         return '매매 차트';
     };
 
+    // 매매 횟수 계산 (signals 기반)
+    const buyTrades = signals ? signals.filter(s => s.action === 'buy').length : 0;
+    const sellTrades = signals ? signals.filter(s => s.action === 'sell').length : 0;
+
     return (
         <div className="dashboard-container">
             {/* 상단 네비게이션 */}
@@ -412,11 +422,11 @@ const CoinDashboard = () => {
                     </div>
                     <div className="kpi-card">
                         <h3>매수거래</h3>
-                        <p className="kpi-value">{formatNumber(kpi?.buy_trades)} 회</p>
+                        <p className="kpi-value">{formatNumber(buyTrades)} 회</p>
                     </div>
                     <div className="kpi-card">
                         <h3>매도거래</h3>
-                        <p className="kpi-value">{formatNumber(kpi?.sell_trades)} 회</p>
+                        <p className="kpi-value">{formatNumber(sellTrades)} 회</p>
                     </div>
                     <div className="kpi-card">
                         <h3>승률</h3>
