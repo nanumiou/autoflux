@@ -23,16 +23,17 @@ const CoinDashboard = () => {
     const [visitorStats, setVisitorStats] = useState({ today: 0, total: 0 });
     // 다운로드 로딩 상태
     const [downloadLoading, setDownloadLoading] = useState(false);
+    // 모달 표시 상태
+    const [showModal, setShowModal] = useState(false);
 
-    // GitHub Releases API를 통한 다운로드
-    const handleDownloadClick = async () => {
-        const isConfirmed = window.confirm(
-            'AutoFlux Desktop 앱을 다운로드하시겠습니까?\n\n' +
-            '• Windows 10/11 지원'
-        );
+    // 다운로드 버튼 클릭 핸들러
+    const handleDownloadClick = () => {
+        setShowModal(true);
+    };
 
-        if (!isConfirmed) return;
-
+    // 다운로드 확정 처리
+    const confirmDownload = async () => {
+        setShowModal(false);
         setDownloadLoading(true);
         try {
             const response = await fetch('https://api.github.com/repos/nanumiou/autoflux/releases/latest');
@@ -529,6 +530,23 @@ const CoinDashboard = () => {
                 </div>
                 <p>© {new Date().getFullYear()} AutoFlux Coin Dashboard</p>
             </footer>
+            {/* 커스텀 다운로드 모달 */}
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h3>앱 다운로드</h3>
+                        <p>AutoFlux Desktop 앱을 다운로드하시겠습니까?</p>
+                        <ul className="modal-list">
+                            <li>Windows 10/11 지원</li>
+                            <li>최신 버전 자동 다운로드</li>
+                        </ul>
+                        <div className="modal-buttons">
+                            <button className="modal-btn confirm" onClick={confirmDownload}>다운로드</button>
+                            <button className="modal-btn cancel" onClick={() => setShowModal(false)}>취소</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
