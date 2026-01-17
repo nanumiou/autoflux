@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { supabase, ADMIN_UUID } from '../supabaseClient';
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceDot
@@ -20,6 +21,39 @@ const CoinDashboard = () => {
     const [error, setError] = useState(null);
     // 방문자 통계
     const [visitorStats, setVisitorStats] = useState({ today: 0, total: 0 });
+    // 다운로드 로딩 상태
+    const [downloadLoading, setDownloadLoading] = useState(false);
+
+    // GitHub Releases API를 통한 다운로드
+    const handleDownloadClick = async () => {
+        const isConfirmed = window.confirm(
+            'AutoFlux Desktop 앱을 다운로드하시겠습니까?\n\n' +
+            '• Windows 10/11 지원'
+        );
+
+        if (!isConfirmed) return;
+
+        setDownloadLoading(true);
+        try {
+            const response = await fetch('https://api.github.com/repos/nanumiou/autoflux/releases/latest');
+            const data = await response.json();
+
+            const asset = data.assets.find(asset =>
+                asset.name.includes('win') || asset.name.endsWith('.exe') || asset.name.endsWith('.msi')
+            );
+
+            if (asset) {
+                window.open(asset.browser_download_url, '_blank');
+            } else {
+                window.open('https://github.com/nanumiou/autoflux/releases/latest', '_blank');
+            }
+        } catch (error) {
+            console.error('Download failed:', error);
+            window.open('https://github.com/nanumiou/autoflux/releases/latest', '_blank');
+        } finally {
+            setDownloadLoading(false);
+        }
+    };
 
     // 데이터 로드
     const fetchData = useCallback(async () => {
@@ -67,7 +101,7 @@ const CoinDashboard = () => {
                 .select('*')
                 .eq('admin_id', ADMIN_UUID)
                 .order('timestamp', { ascending: false })
-                .limit(500);
+                .limit(300);
 
             if (logError) throw logError;
             // '매매 로직 실행' 로그 필터링
@@ -126,7 +160,7 @@ const CoinDashboard = () => {
                     filter: `admin_id=eq.${ADMIN_UUID}`
                 }, (payload) => {
                     if (!payload.new.message.includes('매매 로직 실행')) {
-                        setLogs(prev => [payload.new, ...prev.slice(0, 499)]);
+                        setLogs(prev => [payload.new, ...prev.slice(0, 299)]);
                     }
                 })
                 .subscribe();
@@ -317,6 +351,22 @@ const CoinDashboard = () => {
 
     return (
         <div className="dashboard-container">
+            {/* 상단 네비게이션 */}
+            <div className="top-nav">
+                <div className="header-buttons">
+                    <button
+                        className="btn-download"
+                        onClick={handleDownloadClick}
+                        disabled={downloadLoading}
+                    >
+                        {downloadLoading ? '준비 중...' : '앱 다운로드'}
+                    </button>
+                    <Link to="/user-guide" className="btn-guide">
+                        이용 가이드
+                    </Link>
+                </div>
+            </div>
+
             {/* 헤더 */}
             <header className="dashboard-header">
                 <h1>AutoFlux 자동매매 대시보드</h1>
