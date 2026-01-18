@@ -1,9 +1,8 @@
-import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import { Download, UserPlus, Key, Settings, Bot, Play, ArrowLeft } from 'lucide-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './UserGuide.css';
+import { ArrowLeft, Bot, Download, Key, Play, Settings, UserPlus } from 'lucide-react';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './UserGuide.css';
 
 function UserGuide() {
   const commonSteps = [
@@ -39,18 +38,6 @@ function UserGuide() {
     },
     {
       id: 2,
-      icon: <Key size={36} className="text-warning" />,
-      title: "AI API키 발급 (커스텀 로직 사용 시)",
-      description: "",
-      details: [
-        "구글 제미나이, 오픈AI 중에서 API키 발급 (구글 제미나이 무료)",
-        "매매 설정 페이지에서 API키 등록",
-        "매매 로직 설정에서 커스텀 로직 선택",
-        "입력 창에 자신이 원하는 매매 로직 입력 후 AI 자동 생성"
-      ]
-    },
-    {
-      id: 3,
       icon: <Settings size={36} className="text-info" />,
       title: "매매 로직 설정",
       description: "",
@@ -64,7 +51,7 @@ function UserGuide() {
       ]
     },
     {
-      id: 4,
+      id: 3,
       icon: <Bot size={36} className="text-success" />,
       title: "봇 생성 및 자동매매 시작",
       description: "",
@@ -91,18 +78,6 @@ function UserGuide() {
     },
     {
       id: 2,
-      icon: <Key size={36} className="text-warning" />,
-      title: "AI API키 발급 (커스텀 로직 사용 시)",
-      description: "",
-      details: [
-        "구글 제미나이, 오픈AI 중에서 API키 발급 (구글 제미나이 무료)",
-        "매매 설정 페이지에서 API키 등록",
-        "매매 로직 설정에서 커스텀 로직 선택",
-        "입력 창에 자신이 원하는 매매 로직 입력 후 AI 자동 생성"
-      ]
-    },
-    {
-      id: 3,
       icon: <Settings size={36} className="text-info" />,
       title: "매매 로직 설정",
       description: "",
@@ -115,7 +90,7 @@ function UserGuide() {
       ]
     },
     {
-      id: 4,
+      id: 3,
       icon: <Bot size={36} className="text-success" />,
       title: "봇 생성 및 자동매매 시작",
       description: "",

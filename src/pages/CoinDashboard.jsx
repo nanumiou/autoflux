@@ -356,9 +356,7 @@ const CoinDashboard = () => {
         return '매매 차트';
     };
 
-    // 매매 횟수 계산 (signals 기반)
-    const buyTrades = signals ? signals.filter(s => s.action === 'buy').length : 0;
-    const sellTrades = signals ? signals.filter(s => s.action === 'sell').length : 0;
+
 
     return (
         <div className="dashboard-container">
@@ -422,11 +420,11 @@ const CoinDashboard = () => {
                     </div>
                     <div className="kpi-card">
                         <h3>매수거래</h3>
-                        <p className="kpi-value">{formatNumber(buyTrades)} 회</p>
+                        <p className="kpi-value">{formatNumber(kpi?.buy_trades || 0)} 회</p>
                     </div>
                     <div className="kpi-card">
                         <h3>매도거래</h3>
-                        <p className="kpi-value">{formatNumber(sellTrades)} 회</p>
+                        <p className="kpi-value">{formatNumber(kpi?.sell_trades || 0)} 회</p>
                     </div>
                     <div className="kpi-card">
                         <h3>승률</h3>
