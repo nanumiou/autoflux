@@ -19,6 +19,8 @@ const CoinDashboard = () => {
     const [prices, setPrices] = useState([]);
     // 매매 신호
     const [signals, setSignals] = useState([]);
+    // 실현 손익 데이터
+    const [realizedPnl, setRealizedPnl] = useState([]);
     // 로그
     const [logs, setLogs] = useState([]);
     // 로딩 상태
@@ -114,6 +116,16 @@ const CoinDashboard = () => {
             // '매매 로직 실행' 로그 필터링
             const filteredLogs = (logData || []).filter(log => !log.message.includes('매매 로직 실행'));
             setLogs(filteredLogs);
+
+            // 실현 손익 조회 (누적용)
+            const { data: pnlData, error: pnlError } = await supabase
+                .from('coin_dashboard_realized_pnl')
+                .select('*')
+                .eq('admin_id', ADMIN_UUID);
+
+            if (!pnlError) {
+                setRealizedPnl(pnlData || []);
+            }
 
             setError(null);
         } catch (err) {
@@ -414,21 +426,23 @@ const CoinDashboard = () => {
                     {/* Row 2 */}
                     <div className="kpi-card">
                         <h3>실현 손익</h3>
-                        <p className={`kpi-value ${(kpi?.realized_profit_loss || 0) >= 0 ? 'positive' : 'negative'}`}>
-                            {formatNumber(kpi?.realized_profit_loss)}원
+                        <p className={`kpi-value ${realizedPnl.reduce((sum, item) => sum + (item.profit_loss || 0), 0) >= 0 ? 'positive' : 'negative'}`}>
+                            {formatNumber(realizedPnl.reduce((sum, item) => sum + (item.profit_loss || 0), 0))}원
                         </p>
                     </div>
                     <div className="kpi-card">
                         <h3>매수거래</h3>
-                        <p className="kpi-value">{formatNumber(kpi?.buy_trades || 0)} 회</p>
+                        <p className="kpi-value">{formatNumber(signals.filter(s => s.action === 'buy').length)} 회</p>
                     </div>
                     <div className="kpi-card">
                         <h3>매도거래</h3>
-                        <p className="kpi-value">{formatNumber(kpi?.sell_trades || 0)} 회</p>
+                        <p className="kpi-value">{formatNumber(signals.filter(s => s.action === 'sell').length)} 회</p>
                     </div>
                     <div className="kpi-card">
-                        <h3>승률</h3>
-                        <p className="kpi-value">{kpi?.win_rate?.toFixed(1) || '0.0'}%</p>
+                        <h3>{prices.length > 0 ? prices[0].symbol?.replace('KRW-', '') : ''} 현재가</h3>
+                        <p className="kpi-value">
+                            {chartData.length > 0 ? formatNumber(chartData[chartData.length - 1].price) : '-'}원
+                        </p>
                     </div>
                 </div>
             </section>
