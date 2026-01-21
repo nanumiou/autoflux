@@ -86,7 +86,7 @@
   transition: all 0.3s ease;
   overflow: hidden;
   position: relative;
-  height: 400px;
+  height: 350px;
   display: flex;
   flex-direction: column;
 }
@@ -267,4 +267,55 @@
 
 .user-guide-container .step-details span {
   text-align: left !important;
+}
+
+/* FAQ Styling */
+.faq-item {
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.faq-item:hover {
+  border-color: rgba(13, 110, 253, 0.2);
+}
+
+.faq-q-badge {
+  background: #3b82f6;
+  color: white;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.faq-a-badge {
+  background: #f3f4f6;
+  color: #4b5563;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .faq-item {
+  background-color: rgba(255,255,255,0.05) !important;
+  border-color: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .faq-a-badge {
+  background: rgba(255,255,255,0.1);
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: rgba(255,255,255,0.03) !important;
 }

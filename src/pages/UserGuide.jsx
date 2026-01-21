@@ -32,8 +32,6 @@ function UserGuide() {
         "모의투자 서비스 신청으로 모의투자 계좌 생성",
         "모의투자/실전투자 API키 발급 받기",
         "신청현황 탭에서 APP KEY, APP Secret 복사",
-        "자동매매 데스크톱 앱 '매매 설정' 페이지에서 [새 API 키 추가]에 등록",
-        "⚠️ 모의투자만 이용하는 회원도 종목 조건검색을 사용하려면 실전투자 API키가 필요함"
       ]
     },
     {
@@ -101,9 +99,31 @@ function UserGuide() {
     }
   ];
 
-  const importantNotes = [
-    "모든 자동매매 데이터는 프로그램이 설치된 사용자 PC에 저장됩니다.",
-    "앱을 실행하면 문서 폴더에 Autoflux_Desktop 폴더가 생성되고 DB 및 로그를 확인할 수 있습니다."
+  const faqItems = [
+    {
+      question: "오토플럭스(AutoFlux) 자동매매 앱은 무엇인가요?",
+      answer: "윈도우 PC에 설치해서 사용하는 코인/주식 자동매매 프로그램입니다. "
+    },
+    {
+      question: "오토플럭스 자동매매 앱의 주요 기능은 어떤 것이 있나요?",
+      answer: "코인/주식 자동매매 및 백테스트를 제공하고, 사용자가 원하는 매매 전략을 쉽게 생성해서 활용할 수 있습니다."
+    },
+    {
+      question: "내가 원하는 매매 전략을 어떻게 생성하나요?",
+      answer: "'매매 설정' 메뉴의 커스텀 로직 추가에서 '음봉 연속 3개 생성 및 RSI가 30 이하일 때 매수'와 같이 자연어로 설명하면 자동으로 전략 코드를 생성할 수 있습니다. 생성한 로직은 백테스트와 실전매매에 바로 적용할 수 있습니다."
+    },
+    {
+      question: "주식/코인 백테스트는 비용이 발생하나요?",
+      answer: "아니요, 백테스트 기능은 모든 회원에게 무료로 무제한 제공됩니다. 과거 데이터를 기반으로 전략의 수익성을 충분히 검증한 후 실전에 투입하세요."
+    },
+    {
+      question: "크레딧은 반드시 구매해야 하나요?",
+      answer: "아니요, 'AI를 이용한 전략 및 코드 자동 생성' 기능을 사용할 때만 1회당 1 크레딧이 차감됩니다. 다른 기능은 크레딧이 필요하지 않습니다."
+    },
+    {
+      question: "나의 자동매매 데이터는 어디에 어떻게 보관되나요? 외부에서 누군가가 볼 수도 있나요?",
+      answer: "자동매매 데이터는 프로그램이 설치된 사용자 PC에 저장됩니다. '문서' 폴더에 생성된 'Autoflux_Desktop' 폴더에서 DB 및 로그 파일을 확인할 수 있습니다. 외부에서 자신의 자동매매 데이터에 접근할 수 없습니다."
+    }
   ];
 
   return (
@@ -115,6 +135,34 @@ function UserGuide() {
           홈으로 돌아가기
         </Link>
         {/* <h2 className="fw-bold text-dark mt-3">이용 안내</h2> */}
+      </div>
+
+      {/* FAQ Section */}
+      <div className="mt-5 mb-5 pb-5">
+        <div className="text-center mb-5">
+          {/* <HelpCircle size={48} className="text-primary mb-3" /> */}
+          <h2 className="fw-bold">자주 묻는 질문 (FAQ)</h2>
+        </div>
+        <Row className="justify-content-center">
+          <Col lg={10}>
+            <div className="faq-container">
+              {faqItems.map((item, idx) => (
+                <div key={idx} className="faq-item mb-4 p-4 rounded-4 shadow-sm bg-white border">
+                  <div className="d-flex align-items-start">
+                    <div className="faq-q-badge me-3">Q</div>
+                    <div>
+                      <h5 className="fw-bold mb-3">{item.question}</h5>
+                      <div className="d-flex align-items-start">
+                        <div className="faq-a-badge me-3">A</div>
+                        <p className="text-secondary mb-0 small">{item.answer}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Col>
+        </Row>
       </div>
 
       {/* Main Process Flow */}
@@ -209,33 +257,13 @@ function UserGuide() {
         ))}
       </Row>
 
-      {/* Important Notes Section */}
-      <div className="mb-5">
-        <Card className="border-0 shadow-sm bg-light">
-          <Card.Body className="p-4">
-            <h5 className="fw-bold mb-3 text-start">
-              <i className="fas fa-exclamation-triangle text-warning me-2"></i>
-              참고 사항
-            </h5>
-            <ul className="list-unstyled mb-0">
-              {importantNotes.map((note, index) => (
-                <li key={index} className="mb-2 d-flex align-items-start">
-                  <span className="bullet-point me-2 text-primary">•</span>
-                  <span className="small">{note}</span>
-                </li>
-              ))}
-            </ul>
-          </Card.Body>
-        </Card>
-      </div>
-
       {/* Stock and Coin Sections */}
       <Row className="g-4">
-        {/* Stock Section */}
+        {/* Coin Section */}
         <Col lg={6}>
-          <h3 className="text-center mb-4 fw-bold text-primary">주식</h3>
-          {stockSteps.map((step) => (
-            <Card key={`stock-${step.id}`} className={`mb-3 shadow-sm border-0 step-card step-card-${step.id + 1}`}>
+          <h3 className="text-center mb-4 fw-bold text-primary">코인</h3>
+          {coinSteps.map((step) => (
+            <Card key={`coin-${step.id}`} className={`mb-3 shadow-sm border-0 step-card step-card-${step.id + 1}`}>
               <Card.Body className="p-4">
                 <div className="d-flex align-items-center mb-3">
                   <div className={`step-number me-3 step-${step.id + 1}`}>
@@ -272,11 +300,11 @@ function UserGuide() {
           ))}
         </Col>
 
-        {/* Coin Section */}
+        {/* Stock Section */}
         <Col lg={6}>
-          <h3 className="text-center mb-4 fw-bold text-primary">코인</h3>
-          {coinSteps.map((step) => (
-            <Card key={`coin-${step.id}`} className={`mb-3 shadow-sm border-0 step-card step-card-${step.id + 1}`}>
+          <h3 className="text-center mb-4 fw-bold text-primary">주식</h3>
+          {stockSteps.map((step) => (
+            <Card key={`stock-${step.id}`} className={`mb-3 shadow-sm border-0 step-card step-card-${step.id + 1}`}>
               <Card.Body className="p-4">
                 <div className="d-flex align-items-center mb-3">
                   <div className={`step-number me-3 step-${step.id + 1}`}>
