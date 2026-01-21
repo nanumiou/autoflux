@@ -425,7 +425,7 @@ const CoinDashboard = () => {
                     </div>
                     {/* Row 2 */}
                     <div className="kpi-card">
-                        <h3>실현 손익</h3>
+                        <h3>누적 실현 손익</h3>
                         <p className={`kpi-value ${realizedPnl.reduce((sum, item) => sum + (item.profit_loss || 0), 0) >= 0 ? 'positive' : 'negative'}`}>
                             {formatNumber(realizedPnl.reduce((sum, item) => sum + (item.profit_loss || 0), 0))}원
                         </p>
