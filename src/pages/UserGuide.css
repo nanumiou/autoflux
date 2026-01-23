@@ -86,7 +86,7 @@
   transition: all 0.3s ease;
   overflow: hidden;
   position: relative;
-  height: 350px;
+  height: 300px;
   display: flex;
   flex-direction: column;
 }

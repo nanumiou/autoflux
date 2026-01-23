@@ -102,18 +102,18 @@ function UserGuide() {
   const faqItems = [
     {
       question: "오토플럭스(AutoFlux) 자동매매 앱은 무엇인가요?",
-      answer: "윈도우 PC에 설치해서 사용하는 코인/주식 자동매매 프로그램입니다. "
+      answer: "윈도우 PC에 설치해서 사용하는 코인 자동매매 프로그램입니다. "
     },
     {
       question: "오토플럭스 자동매매 앱의 주요 기능은 어떤 것이 있나요?",
-      answer: "코인/주식 자동매매 및 백테스트를 제공하고, 사용자가 원하는 매매 전략을 쉽게 생성해서 활용할 수 있습니다."
+      answer: "코인 자동매매 및 백테스트를 제공하고, 사용자가 원하는 매매 전략을 쉽게 생성해서 활용할 수 있습니다."
     },
     {
       question: "내가 원하는 매매 전략을 어떻게 생성하나요?",
       answer: "'매매 설정' 메뉴의 커스텀 로직 추가에서 '음봉 연속 3개 생성 및 RSI가 30 이하일 때 매수'와 같이 자연어로 설명하면 자동으로 전략 코드를 생성할 수 있습니다. 생성한 로직은 백테스트와 실전매매에 바로 적용할 수 있습니다."
     },
     {
-      question: "주식/코인 백테스트는 비용이 발생하나요?",
+      question: "백테스트는 비용이 발생하나요?",
       answer: "아니요, 백테스트 기능은 모든 회원에게 무료로 무제한 제공됩니다. 과거 데이터를 기반으로 전략의 수익성을 충분히 검증한 후 실전에 투입하세요."
     },
     {
@@ -218,9 +218,9 @@ function UserGuide() {
       </div>
 
       {/* Common Steps */}
-      <Row className="g-4 mb-5">
+      <Row className="g-4 mb-5 justify-content-center">
         {commonSteps.map((step) => (
-          <Col key={step.id} lg={12}>
+          <Col key={step.id} lg={10}>
             <Card className={`h-100 shadow-sm border-0 step-card step-card-${step.id}`}>
               <Card.Body className="p-4">
                 <div className="d-flex align-items-center mb-3">
@@ -258,9 +258,9 @@ function UserGuide() {
       </Row>
 
       {/* Stock and Coin Sections */}
-      <Row className="g-4">
+      <Row className="g-4 justify-content-center">
         {/* Coin Section */}
-        <Col lg={6}>
+        <Col lg={10}>
           <h3 className="text-center mb-4 fw-bold text-primary">코인</h3>
           {coinSteps.map((step) => (
             <Card key={`coin-${step.id}`} className={`mb-3 shadow-sm border-0 step-card step-card-${step.id + 1}`}>
@@ -270,7 +270,7 @@ function UserGuide() {
                     {step.id}
                   </div>
                   <div>
-                    <h6 className="mb-1 fw-bold">{step.title}</h6>
+                    <h5 className="mb-1 fw-bold">{step.title}</h5>
                   </div>
                 </div>
 
@@ -301,7 +301,7 @@ function UserGuide() {
         </Col>
 
         {/* Stock Section */}
-        <Col lg={6}>
+        {/* <Col lg={6}>
           <h3 className="text-center mb-4 fw-bold text-primary">주식</h3>
           {stockSteps.map((step) => (
             <Card key={`stock-${step.id}`} className={`mb-3 shadow-sm border-0 step-card step-card-${step.id + 1}`}>
@@ -339,7 +339,7 @@ function UserGuide() {
               </Card.Body>
             </Card>
           ))}
-        </Col>
+        </Col> */}
       </Row>
 
     </Container>
