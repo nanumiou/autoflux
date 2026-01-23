@@ -148,17 +148,17 @@ function UserGuide() {
             <div className="faq-container">
               {faqItems.map((item, idx) => (
                 <div key={idx} className="faq-item mb-4 p-4 rounded-4 shadow-sm bg-white border">
-                  <div className="d-flex align-items-start">
+                  <div className="d-flex align-items-start mb-3">
                     <div className="faq-q-badge me-3">Q</div>
-                    <div>
-                      <h5 className="fw-bold mb-3">{item.question}</h5>
-                      <div className="d-flex align-items-start">
-                        <div className="faq-a-badge me-3">A</div>
-                        <p className="text-secondary mb-0 small">{item.answer}</p>
-                      </div>
-                    </div>
+                    <h5 className="fw-bold mb-0">{item.question}</h5>
+                  </div>
+                  <div className="d-flex align-items-start">
+                    <div className="faq-a-badge me-3">A</div>
+                    <p className="text-secondary mb-0 small">{item.answer}</p>
                   </div>
                 </div>
+
+
               ))}
             </div>
           </Col>
