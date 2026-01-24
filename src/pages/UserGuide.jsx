@@ -20,7 +20,7 @@ function UserGuide() {
     }
   ];
 
-  const stockSteps = [
+  /* const stockSteps = [
     {
       id: 1,
       icon: <Key size={36} className="text-warning" />,
@@ -59,7 +59,7 @@ function UserGuide() {
         "[예약]은 오늘과 내일 중 설정한 시간에 봇 자동 시작하는 기능"
       ]
     }
-  ];
+  ]; */
 
   const coinSteps = [
     {
