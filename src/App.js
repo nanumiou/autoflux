@@ -1,10 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import UserGuide from './pages/UserGuide';
-import CoinDashboard from './pages/CoinDashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import CoinDashboard from './pages/CoinDashboard';
+import UserGuide from './pages/UserGuide';
 
 function App() {
   return (
@@ -14,7 +12,6 @@ function App() {
           {/* 메인 페이지를 코인 대시보드로 변경 */}
           <Route path="/" element={<CoinDashboard />} />
           <Route path="/dashboard" element={<Navigate to="/" replace />} />
-          <Route path="/download" element={<HomePage />} />
           <Route path="/user-guide" element={<UserGuide />} />
         </Routes>
       </div>
