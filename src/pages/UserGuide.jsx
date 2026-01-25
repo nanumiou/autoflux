@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ArrowLeft, Bot, Download, Key, Play, Settings, UserPlus } from 'lucide-react';
+import { useEffect } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './UserGuide.css';
@@ -136,6 +137,14 @@ function UserGuide() {
     }
   ];
 
+  // 초기 로드 시 배경색 적용을 위한 클래스 추가
+  useEffect(() => {
+    document.body.classList.add('dashboard-page-body');
+    return () => {
+      document.body.classList.remove('dashboard-page-body');
+    };
+  }, []);
+
   return (
     <Container fluid className="user-guide-container py-5">
       {/* Header with Home Button */}
@@ -193,7 +202,7 @@ function UserGuide() {
                 <div className="step-circle mb-2 step-2">
                   <UserPlus size={36} className="text-white" />
                 </div>
-                <small className="fw-bold text-dark">회원가입</small>
+                <small className="fw-bold text-dark">API키 발급</small>
               </div>
               <div className="process-arrow">
                 <i className="fas fa-chevron-right text-muted"></i>
@@ -202,7 +211,7 @@ function UserGuide() {
                 <div className="step-circle mb-2 step-3">
                   <Key size={36} className="text-white" />
                 </div>
-                <small className="fw-bold text-dark">API키 발급</small>
+                <small className="fw-bold text-dark">매매 로직 설정</small>
               </div>
               <div className="process-arrow">
                 <i className="fas fa-chevron-right text-muted"></i>
@@ -211,7 +220,7 @@ function UserGuide() {
                 <div className="step-circle mb-2 step-4">
                   <Settings size={36} className="text-white" />
                 </div>
-                <small className="fw-bold text-dark">매매 조건 설정</small>
+                <small className="fw-bold text-dark">백테스트</small>
               </div>
               <div className="process-arrow">
                 <i className="fas fa-chevron-right text-muted"></i>
@@ -220,7 +229,7 @@ function UserGuide() {
                 <div className="step-circle mb-2 step-5">
                   <Play size={36} className="text-white" />
                 </div>
-                <small className="fw-bold text-dark">자동매매 시작</small>
+                <small className="fw-bold text-dark">실전매매 시작</small>
               </div>
             </div>
           </Col>
