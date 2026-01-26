@@ -409,6 +409,28 @@
   font-weight: 600;
 }
 
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.footer-link-item {
+  color: #9CA3AF;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-link-item:hover {
+  color: #3B82F6;
+}
+
+.op-3 {
+  opacity: 0.3;
+}
+
 .visitor-stats .divider {
   color: #374151;
 }

@@ -550,7 +550,12 @@ const CoinDashboard = () => {
                     <span className="divider">|</span>
                     <span>Today: <strong>{visitorStats.today.toLocaleString()}</strong></span>
                 </div>
-                <p>© {new Date().getFullYear()} AutoFlux Coin Dashboard</p>
+                <div className="footer-links mb-2">
+                    <Link to="/terms" className="footer-link-item mx-2">이용약관</Link>
+                    <span className="divider op-3">|</span>
+                    <Link to="/privacy" className="footer-link-item mx-2">개인정보처리방침</Link>
+                </div>
+                <p>© {new Date().getFullYear()} AutoFlux. All Rights Reserved.</p>
             </footer>
             {/* 커스텀 다운로드 모달 */}
             {showModal && (

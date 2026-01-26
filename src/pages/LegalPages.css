@@ -1,0 +1,72 @@
+.legal-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.legal-card {
+    background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid #374151 !important;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.legal-card .card-body,
+.legal-card h4,
+.legal-card h5,
+.legal-card p,
+.legal-card ul,
+.legal-card li {
+    text-align: left !important;
+}
+
+.bg-dark-soft {
+    background-color: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(55, 65, 81, 0.5);
+    text-align: left;
+}
+
+.op-8 {
+    opacity: 0.8;
+}
+
+.op-9 {
+    opacity: 0.9;
+}
+
+.legal-card h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.legal-card p {
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+/* Scrollbar for better UX */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+@media (max-width: 768px) {
+    .legal-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .legal-card h4 {
+        font-size: 1.1rem;
+    }
+}
