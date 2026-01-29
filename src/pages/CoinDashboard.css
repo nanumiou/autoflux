@@ -461,6 +461,39 @@
   animation: modalFadeIn 0.2s ease-out;
 }
 
+/* Premium Preparation Modal Styles */
+.prep-modal {
+  text-align: center;
+  max-width: 480px !important;
+  padding: 40px 30px !important;
+  border: 1px solid rgba(59, 130, 246, 0.25) !important;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+}
+
+.prep-divider {
+  width: 100px;
+  height: 2px;
+  background: #3B82F6;
+  margin: 20px auto 30px auto;
+  opacity: 0.8;
+}
+
+.prep-info-box {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(55, 65, 81, 0.5);
+  border-radius: 10px;
+  padding: 24px 20px;
+  margin: 10px 0 30px 0;
+  font-size: 0.95rem;
+  color: #D1D5DB;
+  line-height: 1.8;
+}
+
+.modal-buttons.centered {
+  justify-content: center !important;
+  margin-top: 20px;
+}
+
 @keyframes modalFadeIn {
   from {
     opacity: 0;
@@ -473,9 +506,11 @@
 }
 
 .modal-content h3 {
-  margin: 0 0 16px 0;
-  color: #F3F4F6;
-  font-size: 1.25rem;
+  margin: 0;
+  color: #F8FAFC;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .modal-content p {
@@ -512,7 +547,7 @@
 }
 
 .modal-btn {
-  padding: 8px 16px;
+  padding: 10px 24px;
   border-radius: 6px;
   font-size: 0.95rem;
   font-weight: 500;

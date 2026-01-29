@@ -557,7 +557,7 @@ const CoinDashboard = () => {
                 </div>
                 <p>© {new Date().getFullYear()} AutoFlux. All Rights Reserved.</p>
             </footer>
-            {/* 커스텀 다운로드 모달 */}
+            {/* 기존 다운로드 모달 (앱 출시 후 복구용)
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal-content">
@@ -570,6 +570,24 @@ const CoinDashboard = () => {
                         <div className="modal-buttons">
                             <button className="modal-btn confirm" onClick={confirmDownload}>다운로드</button>
                             <button className="modal-btn cancel" onClick={() => setShowModal(false)}>취소</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            */}
+
+            {/* 임시 커밍순 모달 - 고도화된 디자인 */}
+            {showModal && (
+                <div className="modal-overlay" onClick={() => setShowModal(false)}>
+                    <div className="modal-content prep-modal" onClick={e => e.stopPropagation()}>
+                        <h3>AutoFlux 앱 최종 테스트 진행 중</h3>
+                        <div className="prep-divider"></div>
+                        <div className="prep-info-box">
+                            현재 개발이 완료되었고 최종 테스트 중입니다. <br />
+                            조만간 앱이 출시될 예정입니다.
+                        </div>
+                        <div className="modal-buttons centered">
+                            <button className="modal-btn confirm" onClick={() => setShowModal(false)}>확인</button>
                         </div>
                     </div>
                 </div>
