@@ -29,8 +29,8 @@ const CoinDashboard = () => {
     const [error, setError] = useState(null);
     // 방문자 통계
     const [visitorStats, setVisitorStats] = useState({ today: 0, total: 0 });
-    // 다운로드 로딩 상태
-    const [downloadLoading, setDownloadLoading] = useState(false);
+    // 다운로드 로딩 상태 (앱 출시 후 복구용)
+    // const [downloadLoading, setDownloadLoading] = useState(false);
     // 모달 표시 상태
     const [showModal, setShowModal] = useState(false);
 
@@ -380,9 +380,8 @@ const CoinDashboard = () => {
                     <button
                         className="btn-download"
                         onClick={handleDownloadClick}
-                        disabled={downloadLoading}
                     >
-                        {downloadLoading ? '준비 중...' : '앱 다운로드'}
+                        앱 다운로드
                     </button>
                     <Link to="/user-guide" className="btn-guide">
                         이용 가이드
