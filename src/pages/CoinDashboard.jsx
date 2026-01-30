@@ -39,7 +39,8 @@ const CoinDashboard = () => {
         setShowModal(true);
     };
 
-    // 다운로드 확정 처리
+    // 다운로드 확정 처리 (앱 출시 후 복구용)
+    /*
     const confirmDownload = async () => {
         setShowModal(false);
         setDownloadLoading(true);
@@ -63,6 +64,7 @@ const CoinDashboard = () => {
             setDownloadLoading(false);
         }
     };
+    */
 
     // 데이터 로드
     const fetchData = useCallback(async () => {
