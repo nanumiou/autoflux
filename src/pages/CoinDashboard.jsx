@@ -29,8 +29,8 @@ const CoinDashboard = () => {
     const [error, setError] = useState(null);
     // 방문자 통계
     const [visitorStats, setVisitorStats] = useState({ today: 0, total: 0 });
-    // 다운로드 로딩 상태 (앱 출시 후 복구용)
-    // const [downloadLoading, setDownloadLoading] = useState(false);
+    // 다운로드 로딩 상태
+    const [downloadLoading, setDownloadLoading] = useState(false);
     // 모달 표시 상태
     const [showModal, setShowModal] = useState(false);
 
@@ -39,8 +39,7 @@ const CoinDashboard = () => {
         setShowModal(true);
     };
 
-    // 다운로드 확정 처리 (앱 출시 후 복구용)
-    /*
+    // 다운로드 확정 처리
     const confirmDownload = async () => {
         setShowModal(false);
         setDownloadLoading(true);
@@ -64,7 +63,6 @@ const CoinDashboard = () => {
             setDownloadLoading(false);
         }
     };
-    */
 
     // 데이터 로드
     const fetchData = useCallback(async () => {
@@ -380,11 +378,15 @@ const CoinDashboard = () => {
                     <button
                         className="btn-download"
                         onClick={handleDownloadClick}
+                        disabled={downloadLoading}
                     >
-                        앱 다운로드
+                        {downloadLoading ? '준비 중...' : '앱 다운로드'}
                     </button>
                     <Link to="/user-guide" className="btn-guide">
                         이용 가이드
+                    </Link>
+                    <Link to="/" className="btn-guide">
+                        홈으로 이동
                     </Link>
                 </div>
             </div>
@@ -556,9 +558,9 @@ const CoinDashboard = () => {
                     <span className="divider op-3">|</span>
                     <Link to="/privacy" className="footer-link-item mx-2">개인정보처리방침</Link>
                 </div>
-                <p>© {new Date().getFullYear()} AutoFlux. All Rights Reserved.</p>
+                <p>© {new Date().getFullYear()} 프랜홀딩스. All Rights Reserved.</p>
             </footer>
-            {/* 기존 다운로드 모달 (앱 출시 후 복구용)
+            {/* 다운로드 모달 */}
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal-content">
@@ -571,24 +573,6 @@ const CoinDashboard = () => {
                         <div className="modal-buttons">
                             <button className="modal-btn confirm" onClick={confirmDownload}>다운로드</button>
                             <button className="modal-btn cancel" onClick={() => setShowModal(false)}>취소</button>
-                        </div>
-                    </div>
-                </div>
-            )}
-            */}
-
-            {/* 임시 커밍순 모달 - 고도화된 디자인 */}
-            {showModal && (
-                <div className="modal-overlay" onClick={() => setShowModal(false)}>
-                    <div className="modal-content prep-modal" onClick={e => e.stopPropagation()}>
-                        <h3>AutoFlux 앱 최종 테스트 진행 중</h3>
-                        <div className="prep-divider"></div>
-                        <div className="prep-info-box">
-                            현재 개발이 완료되었고 최종 테스트 중입니다. <br />
-                            조만간 앱이 출시될 예정입니다.
-                        </div>
-                        <div className="modal-buttons centered">
-                            <button className="modal-btn confirm" onClick={() => setShowModal(false)}>확인</button>
                         </div>
                     </div>
                 </div>
