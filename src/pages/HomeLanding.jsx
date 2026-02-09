@@ -131,7 +131,7 @@ const HomeLanding = () => {
                 <div className="modal-overlay">
                     <div className="modal-content">
                         <h3>앱 다운로드</h3>
-                        <p>AutoFlux Desktop 앱을 다운로드하시겠습니까?</p>
+                        <p>AutoFlux 앱을 다운로드하시겠습니까?</p>
                         <ul className="modal-list">
                             <li>Windows 10/11 지원</li>
                             <li>최신 버전 자동 다운로드</li>
