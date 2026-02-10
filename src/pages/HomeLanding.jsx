@@ -62,7 +62,7 @@ const HomeLanding = () => {
             {/* Main Content */}
             <main className="landing-main">
                 <section className="hero-section">
-                    <h2>감정은 배제하고 데이터로 투자하세요</h2>
+                    <h1>감정은 배제하고 데이터로 투자하세요</h1>
                     <p className="subtitle">
                         AutoFlux는 복잡한 시장 분석과 반복적인 매매 주문에서 <br />
                         당신을 해방시켜 줄 강력한 자동 매매 플랫폼입니다.
